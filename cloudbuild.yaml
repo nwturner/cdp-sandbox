@@ -10,7 +10,7 @@ phases:
   install:
     commands:
       - echo Entered the Terraform install phase...
-      - yum install sudo
+      - yum -y install sudo
       - sudo yum install -y yum-utils
       - sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
       - sudo yum -y install terraform
@@ -28,7 +28,7 @@ phases:
     commands:
       - echo Entered the Terraform apply phase...
       - echo Build started on `date`
-      - terraform apply myplan
+      - terraform apply -auto-approve myplan
     finally:
       - echo This always runs even if the install command fails
   post_build:
