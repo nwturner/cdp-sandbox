@@ -138,3 +138,4 @@ gitops-terraform-key.json
 account.json
 verify-terraform/
 /.project
+.terraform*
