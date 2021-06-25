@@ -10,7 +10,6 @@ phases:
   install:
     commands:
       - echo Entered the Terraform install phase...
-      - apt-get update -y
       - sudo yum install -y yum-utils
       - sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
       - sudo yum -y install terraform
