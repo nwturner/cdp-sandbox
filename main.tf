@@ -10,8 +10,10 @@ terraform {
 }
 
 provider "aws" {
-  profile = "default"
-  region  = "us-west-2"
+  profile    = "default"
+  region     = "us-west-2"
+  access_key = "AKIAVGXJ5DZZFMDYDE5U"
+  secret_key = "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"
 }
 
 resource "aws_instance" "test_app_server" {
