@@ -14,17 +14,17 @@ phases:
       - sudo yum install -y yum-utils
       - sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
       - sudo yum -y install terraform
-      - cd ec2
+      - ls
     finally:
       - echo This always runs even if the update or install command fails 
-  plan:
+  pre_build:
     commands:
       - echo Entered the Terraform plan phase...
       - terraform init
       - terraform plan -out myplan
     finally:
       - echo This always runs even if the login command fails 
-  apply:
+  build:
     commands:
       - echo Entered the Terraform apply phase...
       - echo Build started on `date`
