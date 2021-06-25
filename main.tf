@@ -17,12 +17,13 @@ provider "aws" {
 }
 
 resource "aws_instance" "test_app_server" {
+  count                      = 1
   ami                        = "ami-0721c9af7b9b75114"
   instance_type              = "t2.micro"
   vpc_security_group_ids     = ["sg-bfb03b8a"]
   subnet_id                  = "subnet-46973d0c"
 
   tags = {
-    Name = "ExampleAppServerInstance"
+    Name = "NewInstance1"
   }
 }
