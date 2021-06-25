@@ -1,0 +1,65 @@
+version: 0.2
+
+# env:
+#   variables:
+#     JAVA_HOME: "/usr/lib/jvm/java-8-openjdk-amd64"
+#   parameter-store:
+#     LOGIN_PASSWORD: /CodeBuild/dockerLoginPassword
+
+phases:
+  install:
+    commands:
+      - echo Entered the Terraform install phase...
+      - apt-get update -y
+      - sudo yum install -y yum-utils
+      - sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+      - sudo yum -y install terraform
+      - cd ec2
+    finally:
+      - echo This always runs even if the update or install command fails 
+  plan:
+    commands:
+      - echo Entered the Terraform plan phase...
+      - terraform init
+      - terraform plan -out myplan
+    finally:
+      - echo This always runs even if the login command fails 
+  apply:
+    commands:
+      - echo Entered the Terraform apply phase...
+      - echo Build started on `date`
+      - terraform apply myplan
+    finally:
+      - echo This always runs even if the install command fails
+  post_build:
+    commands:
+      - echo Entered the post_build phase...
+      - echo Build completed on `date`
+
+# reports:
+#   arn:aws:codebuild:your-region:your-aws-account-id:report-group/report-group-name-1:
+#     files:
+#       - "**/*"
+#     base-directory: 'target/tests/reports'
+#     discard-paths: no
+#   reportGroupCucumberJson:
+#     files:
+#       - 'cucumber/target/cucumber-tests.xml'
+#     discard-paths: yes
+#     file-format: CUCUMBERJSON # default is JUNITXML
+# artifacts:
+#   files:
+#     - target/messageUtil-1.0.jar
+#   discard-paths: yes
+#   secondary-artifacts:
+#     artifact1:
+#       files:
+#         - target/artifact-1.0.jar
+#       discard-paths: yes
+#     artifact2:
+#       files:
+#         - target/artifact-2.0.jar
+#       discard-paths: yes
+# cache:
+#   paths:
+#     - '/root/.m2/**/*'

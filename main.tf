@@ -14,9 +14,11 @@ provider "aws" {
   region  = "us-west-2"
 }
 
-resource "aws_instance" "app_server" {
-  ami           = "ami-830c94e3"
-  instance_type = "t2.micro"
+resource "aws_instance" "test_app_server" {
+  ami                        = "ami-0721c9af7b9b75114"
+  instance_type              = "t2.micro"
+  vpc_security_group_ids     = ["sg-bfb03b8a"]
+  subnet_id                  = "subnet-46973d0c"
 
   tags = {
     Name = "ExampleAppServerInstance"
