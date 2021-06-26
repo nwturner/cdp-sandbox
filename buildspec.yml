@@ -32,6 +32,7 @@ phases:
       - echo Entered the Terraform apply phase...
       - echo Build started on `date`
       - ls
+      - cat .terraform.lock.hcl
       - terraform apply -auto-approve myplan
     finally:
       - echo This always runs even if the install command fails
@@ -41,7 +42,7 @@ phases:
       - echo Build completed on `date`
 
 # reports:
-#   arn:aws:codebuild:your-region:your-aws-account-id:report-group/report-group-name-1:
+#   my-project-1-my-report-group:
 #     files:
 #       - "**/*"
 #     base-directory: 'target/tests/reports'
