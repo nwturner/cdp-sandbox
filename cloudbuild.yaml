@@ -1,10 +1,11 @@
 version: 0.2
 
-# env:
-#   variables:
-#     JAVA_HOME: "/usr/lib/jvm/java-8-openjdk-amd64"
-#   parameter-store:
-#     LOGIN_PASSWORD: /CodeBuild/dockerLoginPassword
+env:
+  # variables:
+  #   JAVA_HOME: "/usr/lib/jvm/java-8-openjdk-amd64"
+  parameter-store:
+    AWS_ACCESS_KEY_ID: terraform-key-id
+    AWS_SECRET_ACCESS_KEY: terraform-secret-key
 
 phases:
   install:
@@ -28,6 +29,7 @@ phases:
     commands:
       - echo Entered the Terraform apply phase...
       - echo Build started on `date`
+      - ls
       - terraform apply -auto-approve myplan
     finally:
       - echo This always runs even if the install command fails
