@@ -21,6 +21,6 @@ resource "aws_instance" "test_app_server" {
   ami                        = "ami-0721c9af7b9b75114"
   instance_type              = "t2.micro"
   tags = {
-    Name = "NewInstance2"
+    Name = "test-linux-machine"
   }
 }
