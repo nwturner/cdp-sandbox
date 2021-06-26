@@ -32,6 +32,7 @@ phases:
       - echo Entered the Terraform apply phase...
       - echo Build started on `date`
       - ls
+      - cat .terraform.lock.hcl
       - terraform apply -auto-approve myplan
     finally:
       - echo This always runs even if the install command fails
