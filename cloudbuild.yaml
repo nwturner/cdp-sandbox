@@ -42,7 +42,7 @@ phases:
       - echo Build completed on `date`
 
 reports:
-  arn:aws:codebuild:us-west-2:cloud-data-platform:report-group/report-group-name-1:
+  arn:aws:codebuild:us-west-2:cloud-data-platform:report-group-name-1:
     files:
       - "**/*"
     base-directory: 'target/tests/reports'
