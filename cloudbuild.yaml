@@ -4,8 +4,8 @@ env:
   # variables:
   #   JAVA_HOME: "/usr/lib/jvm/java-8-openjdk-amd64"
   parameter-store:
-    AWS_ACCESS_KEY_ID: terraform-key-id
-    AWS_SECRET_ACCESS_KEY: terraform-secret-key
+    AWS_ACCESS_KEY_ID: "terraform-key-id"
+    AWS_SECRET_ACCESS_KEY: "terraform-secret-key"
 
 phases:
   install:
