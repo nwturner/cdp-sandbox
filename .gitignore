@@ -127,3 +127,15 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Terraform
+.terraform
+terraform.tfstate
+terraform.tfstate.backup
+*terraform-key.json
+gitops-terraform-key.json
+*key.json
+account.json
+verify-terraform/
+/.project
+.terraform*
